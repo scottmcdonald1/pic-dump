@@ -6,10 +6,12 @@ import { Header } from '../components/Header'
 
 const About: NextPage = () => {
     return (
-      <div>
-        <Header /> 
-        <h1>About</h1> 
-      </div>
+      <object className="open">
+        <div>
+          <h1>This is /about</h1> 
+        </div>
+      </object>
+      
     )
 }
 

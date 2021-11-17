@@ -7,11 +7,11 @@ import { Gallery } from '../components/Gallery'
 
 const Home: NextPage = () => {
   return (
-    
-    <div>
-      {/* Header with navigation */}
-      <Gallery/>
-    </div>
+    <object className="open">
+      <div>
+        <h1>This is /index</h1> 
+      </div>
+    </object>
   )
 }
 

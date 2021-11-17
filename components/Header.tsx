@@ -5,7 +5,7 @@ export function Header() {
   return (
     <div>
       <div className="title">
-          <h1 className="font1">scott mcdonald</h1>
+          <h1 className="font1">SCOTT MCDONALD</h1>
           </div>
       <NavBar/>
 
@@ -21,9 +21,9 @@ function NavBar() {
         <a className="toggle-nav font1">☰ Menu</a>
 
         <ul className="font0">
-          <NavLink href="/doodles">DOODLES</NavLink>
-          <NavLink href="/paintings">PAINTINGS</NavLink>
-          <NavLink href="/web-design">WEB DESIGN</NavLink>
+          <NavLink href="/">HOME</NavLink>
+          <NavLink href="/artwork">ARTWORK</NavLink>
+          <NavLink href="/web-dev">WEB DEVELOPMENT</NavLink>
           <NavLink href="/about">ABOUT</NavLink>
         </ul>
 

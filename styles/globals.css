@@ -64,13 +64,15 @@ body {
   padding: 0;
 }
 .flex-nav li {
-  flex: 3;
+  flex: 3 1;
   margin: 0px;
   padding: 0px;
   border: 1px solid rgba(255, 255, 255, 0);
   transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
   cursor: pointer;
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
 }
 .flex-nav li h4 {
   color: rgba(76, 66, 61, 1);
@@ -108,8 +110,10 @@ body {
   text-align: center;
   text-decoration: none;
   width: 100%;
+  display: flex;
   padding: 10px 0px;
   margin: 2px 2px;
+  justify-content: center;
 }
 
 /* FOOTER */
