@@ -6,38 +6,58 @@ let images: Image[] = IMAGES;
 
 export function Gallery() {
     return (
-        <object className="open">
-            {images.map((image) => {
-                return (
-                    <DoodleBox 
-                        title={image.title} 
-                        description={image.description} 
-                        src={image.src} 
-                    />
-                )
-            })}
-        </object>
+        <div className="wrapper">
+            {/* <RadioButtons /> */}
+            <GalleryContainer />
+        </div>
     )
 }
 
-function DoodleBox(props : { title: string, description: string, src: string }) {
+function RadioButtons() {
+
+    let imageTypes: string[] = [];
+    images.forEach(image => {
+        if (!imageTypes.includes(image.type)) {
+            imageTypes.push(image.type);
+        }
+    })
+
+    return (
+        <div>
+            {imageTypes.map((type) =>
+                <div>
+                    <input type="radio" id={type} value={type} name="type" />
+                    <label>{type}</label>
+                </div>
+            )}
+        </div>
+    )
+}
+
+function GalleryContainer() {
+    return (
+        <div className="gallery">
+            {images.map((image) => 
+                <DoodleBox 
+                    key={image.id}
+                    title={image.title} 
+                    description={image.description} 
+                    src={image.src} 
+                    orientation={image.orientation}
+                />
+            )}
+        </div>
+    )
+}
+
+function DoodleBox(props : { title: string, description: string, src: string , orientation: string}) {
     return (
             <div className="doodle-box">
                 <div className="doodle-mask">
                     <h3 className="font1"><i>{props.title}</i></h3>
                     <h3 className="font0">{props.description}</h3>
                 </div>
-                <img className="doodle-image portrait" src={props.src} />
+                <img className={"doodle-image " + props.orientation} src={props.src} />
             </div>
     )
 }
-
-{/* <DoodleBox title="Squad Ghouls" description="marker & pen" src="images/squad_ghouls.png" />
-<DoodleBox title="Lightyears Davis" description="marker & pen" src="images/lightyears_davis.png" />
-<DoodleBox title="Beanie It's Cold Outside" description="marker & pen" src="images/beanie_it's_cold_outside.png" />
-<DoodleBox title="Duckie" description="marker & pen" src="images/duckie.png" />
-<DoodleBox title="Eat Your Vegetables" description="marker & pen" src="images/eat_your_vegetables.png" />
-<DoodleBox title="Grapes" description="marker & pen" src="images/grapes.png" />
-<DoodleBox title="It's Just a Plant" description="marker & pen" src="images/it's_just_a_plant.png" />
-<DoodleBox title="Swab the Duck" description="marker & pen" src="images/swab_the_duck.png" />
-<DoodleBox title="Milk" description="marker & pen" src="images/milk.png" /> */}

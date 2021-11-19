@@ -3,4 +3,6 @@ export interface Image {
     title: string;
     description: string;
     src: string;
+    orientation: string;
+    type: string;
 }

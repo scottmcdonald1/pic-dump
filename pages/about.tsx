@@ -6,11 +6,11 @@ import { Header } from '../components/Header'
 
 const About: NextPage = () => {
     return (
-      <object className="open">
+      <div className="gallery">
         <div>
           <h1>This is /about</h1> 
         </div>
-      </object>
+      </div>
       
     )
 }

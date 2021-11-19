@@ -7,11 +7,11 @@ import { Gallery } from '../components/Gallery'
 
 const Home: NextPage = () => {
   return (
-    <object className="open">
+    <div className="gallery">
       <div>
         <h1>This is /index</h1> 
       </div>
-    </object>
+    </div>
   )
 }
 

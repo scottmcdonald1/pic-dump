@@ -4,23 +4,27 @@ import styles from '../styles/Web.module.css'
 
 const WebDesign: NextPage = () => {
     return (
-        <object className="open">
+        <div className="gallery">
             <div>
                 <LinkPreview href="https://bookbase-app.herokuapp.com/" thumbnail="site-previews/bookbase.png" />
             </div>
-        </object>
+        </div>
     )
 }
 
 function LinkPreview(props: {href:string, thumbnail:string}) {
     return (
-        <div className="thumbnail-container">
-            <div className="thumbnail">
-                <a href={props.href} target="_blank">
-                    <img src={props.thumbnail} width="300" height="200"></img>
-                </a>
+        <a href={props.href} target="_blank">
+            <div className="doodle-box">
+                
+                    <div className="doodle-mask">
+                        <h3 className="font1">Bookbase</h3>
+                    </div>
+                
+                <img src={props.thumbnail} width="300" height="200"></img>
+
             </div>
-        </div>
+        </a>
     )
 }
 
