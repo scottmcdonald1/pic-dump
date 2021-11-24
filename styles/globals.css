@@ -126,6 +126,13 @@ body {
   margin-top: auto;
 }
 
+.form {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 /* FRAME */
 .gallery {
   width: 100vw;

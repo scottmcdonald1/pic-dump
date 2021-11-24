@@ -1,43 +1,58 @@
-import React, { ReactNode } from "react"
+import { isLocalURL } from "next/dist/shared/lib/router/router";
+import { type } from "os";
+import React, { ChangeEvent, ReactNode, useState } from "react"
 import { Image } from "../interfaces/Image";
 import { IMAGES } from "./mock-images"
 
 let images: Image[] = IMAGES;
 
-export function Gallery() {
-    return (
-        <div className="wrapper">
-            {/* <RadioButtons /> */}
-            <GalleryContainer />
-        </div>
-    )
-}
 
-function RadioButtons() {
+export function Gallery() {
+
+    const [galleryFilter, setGalleryFilter] = useState("all");
 
     let imageTypes: string[] = [];
+    imageTypes.push("all");
     images.forEach(image => {
         if (!imageTypes.includes(image.type)) {
             imageTypes.push(image.type);
         }
     })
 
+    const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        setGalleryFilter(e.target.value)
+    }
+
+    let filteredImages = galleryFilter == "all" ? images : images.filter(image => image.type == galleryFilter);
+
     return (
-        <div>
-            {imageTypes.map((type) =>
-                <div>
-                    <input type="radio" id={type} value={type} name="type" />
-                    <label>{type}</label>
-                </div>
-            )}
+        <div className="wrapper">
+            <RadioButtons handleTypeChange={handleTypeChange} imageTypes={imageTypes} galleryFilter={galleryFilter} />
+            <GalleryContainer filteredImages={filteredImages} />
         </div>
     )
 }
 
-function GalleryContainer() {
+function RadioButtons({handleTypeChange, imageTypes, galleryFilter} : {handleTypeChange: React.ChangeEventHandler,imageTypes: string[], galleryFilter: string}) {
+
     return (
         <div className="gallery">
-            {images.map((image) => 
+            <div className="form" >
+                {imageTypes.map(type =>
+                    <label>
+                        <input type="radio" key={imageTypes.indexOf(type)} id={type} value={type} name="type" checked={galleryFilter == type} onChange={handleTypeChange} />
+                        {type}
+                    </label>
+                )}
+            </div>
+        </div>
+    )
+}
+
+function GalleryContainer({filteredImages} : {filteredImages : Image[]}) {
+    return (
+        <div className="gallery">
+            {filteredImages.map(image => 
                 <DoodleBox 
                     key={image.id}
                     title={image.title} 
